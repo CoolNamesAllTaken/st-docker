@@ -22,7 +22,7 @@ NOTE: This will apply `setup.patch` that is located in this directory. This will
 
 If the `setup.patch` file need to be updated, follow the steps below.
 
-1. Ensure that `st-stm32cubeclt_<version>_<blablabla>_amd64.sh` has been downloaded into `/usr/setup/temp` and untarred (this should happen automatically with `/usr/setup/install_stm32cubeclt.bash`).
+1. Run `bash install_stm32cubeclt.bash --untar-only` to download `st-stm32cubeclt_<version>_<blablabla>_amd64.sh` into `/usr/setup/temp` and untar it, but not run the rest of the installation.
 2. Copy `setup.sh` and save it as `setup_fixed.sh`. Comment out all interactive sections that would bork an automatic install (you can use the old `setup.sh` for inspiration).
 3. Run `bash create_patch.bash`. This will create a unified diff between `setup_fixed.sh` and `setup.sh`, retarget it so that it can be properly applied to `setup.sh`, and save it in `/usr/setup/stm32cubeclt_setup_patch/setup.patch`.
 4. Run `bash apply_patch.bash` to make sure that your new `setup.patch` worked properly.
