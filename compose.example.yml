@@ -1,6 +1,6 @@
 version: "3.2"
 services:
-  pico-docker:
+  st-docker:
     image: coolnamesalltaken/st-docker:latest
     volumes:
       - type: bind

@@ -25,7 +25,7 @@ Run `docker image pull coolnamesalltaken/st-docker:latest` on your command line 
 
 Be sure to run `git submodule update --init --recursive` before building! You may need to change Git's [long filename setting](https://katalon-inc.my.site.com/katalonhelpcenter/s/article/How-to-fix-Git-Clone-Filename-too-long-Error-in-Windows) for this to complete successfully.
 
-From this directory, run the following shell command. This will build the Docker file in the current directory and tag it with the name "pico-docker".
+From this directory, run the following shell command. This will build the Docker file in the current directory and tag it with the name "st-docker".
 
 ```bash
 docker build -t coolnamesalltaken/st-docker .
@@ -41,11 +41,11 @@ docker build --no-cache --progress=plain -t coolnamesalltaken/st-docker . &>buil
 
 Navigate to the directory you would like to bind to the docker container. Use the commands in 3A, 3B, or 3C (depending on your prefernece and operating system) to start the docker container and bind it to your current directory. This will create a container that is bind-mounted to your present working directory, so any files you change in your directory will also be changed in the docker container. If you stop the docker container and start it up again later, it will still be bound to the specified directory.
 
-If you use this docker container for multiple projects, you will end up with a number of different pico-docker containers, each bind-mounted to a separate project directory.
+If you use this docker container for multiple projects, you will end up with a number of different st-docker containers, each bind-mounted to a separate project directory.
 
 ### 3A: Docker Compose
 
-This is the easiest option for running a pico-docker container! Copy `compose.example.yml` into the project folder that you would like to mount to your docker container, and edit it to change where your project will mount to in the container.
+This is the easiest option for running a st-docker container! Copy `compose.example.yml` into the project folder that you would like to mount to your docker container, and edit it to change where your project will mount to in the container.
 
 Run the docker container by calling `docker compose up` in the directory with the compose YAML file. You can inspect the container using a BASH shell by executing `docker compose exec st-docker bash`.
 
