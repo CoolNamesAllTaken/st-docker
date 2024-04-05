@@ -21,8 +21,14 @@ RUN ["/usr/bin/bash", "-c", "apt -y install gdb"]
 # Install CMAKE.
 RUN apt install -y cmake
 
+# Install arm-none-eabi-gcc.
+RUN ["/usr/bin/bash", "-c", "/usr/setup/install_arm_none_eabi.bash"]
+
 # Install the STM32 Command Line Tools package.
 RUN ["/usr/bin/bash", "-c", "/usr/setup/install_stm32cubeclt.bash"]
+
+# Export the STM32_CUBE_CLT_DIR environment variable as the path to the newest folder in /opt/st/.
+RUN sudo echo "export STM32_CUBE_CLT_DIR=$(ls -td /opt/st/*/ | head -1)" >> /root/.bashrc
 
 # Put users back in the root directory when starting up.
 WORKDIR /
