@@ -12,7 +12,17 @@ RUN apt -y install wget
 RUN apt install python3 pip -y
 RUN ["/usr/bin/bash", "-c", "pip install gdown"]
 
-RUN ["/usr/bin/bash", "-c", "/usr/setup/install_stm32cubeclt.bash"]
+# Install ninja for building C/C++
+RUN apt install -y ninja-build
 
 # Install GDB for local debugging
-# RUN ["/usr/bin/bash", "-c", "apt -y install gdb"]
+RUN ["/usr/bin/bash", "-c", "apt -y install gdb"]
+
+# Install CMAKE.
+RUN apt install -y cmake
+
+# Install the STM32 Command Line Tools package.
+RUN ["/usr/bin/bash", "-c", "/usr/setup/install_stm32cubeclt.bash"]
+
+# Put users back in the root directory when starting up.
+WORKDIR /

@@ -1,5 +1,5 @@
---- stm32cubeclt_setup_patch/../temp/setup.sh	2024-03-15 15:24:03.000000000 +0000
-+++ stm32cubeclt_setup_patch/../temp/setup__patched__.sh	2024-04-04 19:27:18.360051809 +0000
+--- stm32cubeclt_setup_patch/../temp/setup.sh	2024-04-04 22:55:05.746931899 +0000
++++ stm32cubeclt_setup_patch/../temp/setup__patched__.sh	2024-04-04 23:00:40.953891864 +0000
 @@ -8,24 +8,24 @@
  chmod +x $thisdir/*.sh
  
@@ -54,8 +54,9 @@
 +	# 	installdir=${answer_install_clt_dir:-$installdir}
 +	# else
  		# Not interactive
- 		installdir="$param_installdir"
+-		installdir="$param_installdir"
 -	fi
++		# installdir="$param_installdir"
 +	# fi
  
  	# Sanity checks

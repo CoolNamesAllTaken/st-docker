@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   pico-docker:
-    image: coolnamesalltaken/pico-docker:latest
+    image: coolnamesalltaken/st-docker:latest
     volumes:
       - type: bind
         source: . # Which directory from the host computer gets mounted to the container.

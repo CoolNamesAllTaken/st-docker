@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   st-docker:
-    image: st-docker
+    image: coolnamesalltaken/st-docker:latest
     volumes:
       - ./example_dir:/example_dir
     command: tail -f /dev/null # keep the container running forever

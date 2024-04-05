@@ -1,8 +1,8 @@
-# pico-docker
+# st-docker
 
-Setup scripts for creating a docker container with the Raspberry Pi Pico SDK, the relevant ARM compiler, and the JLink debugger utility.
+Setup scripts for creating a docker image with the STM32CubeCLT (Command Line Tools package) and some other helpful utilities.
 
-A prebuilt image of this docker container is available on DockerHub at [coolnamesalltaken/pico-docker](https://hub.docker.com/repository/docker/coolnamesalltaken/pico-docker/general).
+A prebuilt image of this docker container is available on DockerHub at [coolnamesalltaken/st-docker](https://hub.docker.com/repository/docker/coolnamesalltaken/st-docker/general).
 
 # Getting Started
 
@@ -19,7 +19,7 @@ Follow the instructions below for using the pre-built image from dockerhub, or b
 
 ### 2A: Use the pre-built Docker image
 
-Run `docker image pull coolnamesalltaken/pico-docker:latest` on your command line to pull the latest pre-built image. If I screwed something up with a recent push to the dockerhub repo, you may want to specify a different tag instead!
+Run `docker image pull coolnamesalltaken/st-docker:latest` on your command line to pull the latest pre-built image. If I screwed something up with a recent push to the dockerhub repo, you may want to specify a different tag instead!
 
 ### 2B: Build the Docker image yourself
 
@@ -28,13 +28,13 @@ Be sure to run `git submodule update --init --recursive` before building! You ma
 From this directory, run the following shell command. This will build the Docker file in the current directory and tag it with the name "pico-docker".
 
 ```bash
-docker build -t pico-docker .
+docker build -t coolnamesalltaken/st-docker .
 ```
 
 If you want to output stdout and stderr from the build process to a log file, use the following command instead.
 
 ```bash
-docker build --no-cache --progress=plain -t pico-docker . &>build.log
+docker build --no-cache --progress=plain -t coolnamesalltaken/st-docker . &>build.log
 ```
 
 ## 3: Run the Docker Container
@@ -47,14 +47,14 @@ If you use this docker container for multiple projects, you will end up with a n
 
 This is the easiest option for running a pico-docker container! Copy `compose.example.yml` into the project folder that you would like to mount to your docker container, and edit it to change where your project will mount to in the container.
 
-Run the docker container by calling `docker compose up` in the directory with the compose YAML file.
+Run the docker container by calling `docker compose up` in the directory with the compose YAML file. You can inspect the container using a BASH shell by executing `docker compose exec st-docker bash`.
 
 ### 3B: Running the Docker container manually on Linux or Mac
 
 Start an interactive docker container on Linux or Mac with the command below. Mounts the current directory to `/root/<current directory>`.
 
 ```bash
-docker run --name pico-docker -it --mount type=bind,source="$(pwd)",target=/root/$(pwd) pico-docker-image
+docker run --name st-docker -it --mount type=bind,source="$(pwd)",target=/root/$(pwd) coolnamesalltaken/st-docker
 ```
 
 ### 3C: Running the Docker container manually on Windows
@@ -62,9 +62,9 @@ docker run --name pico-docker -it --mount type=bind,source="$(pwd)",target=/root
 Start an interactive docker container on Windows with the command below. Mounts the current directory to `/root/<current directory>`.
 
 ```bash
-winpty docker run --name pico-docker -it --mount type=bind,source="$(pwd)",target=/root/$(pwd) pico-docker-image
+winpty docker run --name st-docker -it --mount type=bind,source="$(pwd)",target=/root/$(pwd) coolnamesalltaken/st-docker
 ```
 
 ### Develop in the Docker container
 
-Connect to the docker container with VS Code or another IDE and enjoy developing! The environment variable PICO_SDK_PATH should be set, and the Pico SDK should be available at `/usr/local/bin`.
+Connect to the docker container with VS Code or another IDE and enjoy developing! The STM32CubeCLT binaries have been added to $PATH, and are also available at `/opt/st/stm32cubeclt_1.15.0` (or whatever the most recent version is).

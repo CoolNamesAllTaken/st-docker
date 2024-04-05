@@ -4,7 +4,7 @@ stm32clt_linux_sh_share_link_id="1voB0VygyP1h-CEfry6GT5f0uzySs9NyX"
 stm32clt_linux_sh_url="https://drive.google.com/uc?export=download&confirm=t&id=$stm32clt_linux_sh_share_link_id"
 # NOTE: The filename is important, since it's maybe used for versioning within the install script itself!
 stm32clt_linux_sh_file=st-stm32cubeclt_1.15.0_20695_20240315_1429_amd64.sh
-stm32clt_install_dir=/usr/local/stm32clt
+stm32clt_install_dir=
 temp_dir=$(dirname "$0")/temp
 
 # Allow user to set an option to skip installation, and just leave un-tarred files in the temp directory.
