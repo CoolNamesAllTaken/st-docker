@@ -5,9 +5,10 @@ latest_arm_none_eabi_version_date_str=$(echo $latest_arm_none_eabi | grep -oE "[
 latest_arm_none_eabi_url=https://developer.arm.com/-/media/Files/downloads/gnu-rm/$latest_arm_none_eabi_version_date_str/$latest_arm_none_eabi-x86_64-linux.tar.bz2
 
 # Install dependencies
-sudo apt -y install libncurses-dev
-sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 /usr/lib/x86_64-linux-gnu/libncurses.so.5
-sudo ln -s /usr/lib/x86_64-linux-gnu/libtinfo.so.6 /usr/lib/x86_64-linux-gnu/libtinfo.so.o5
+# sudo apt -y install libncurses-dev
+# sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 /usr/lib/x86_64-linux-gnu/libncurses.so.5
+# sudo ln -s /usr/lib/x86_64-linux-gnu/libtinfo.so.6 /usr/lib/x86_64-linux-gnu/libtinfo.so.o5
+sudo apt -y install libncurses5
 sudo apt -y install python3
 sudo apt install -y build-essential
 
